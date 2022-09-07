@@ -28,7 +28,7 @@
         "value": "databricks-preprod-rg"
       },
       "workspaceName" : {
-        "value": "dbxwspreprod"
+        "value": "synapsewspreprod"
       },
       "pricingTier": {
         "value": "premium"

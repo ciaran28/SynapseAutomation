@@ -6,11 +6,13 @@ param storageConfig object
 param containerNames array
 param resourceGroupName string
 param workspaceName string
-param pricingTier string
 param ShouldCreateContainers bool = true
 param loganalyticswsname string 
 param appInsightswsname string 
 param storageAccountName string 
+
+
+
 
 
 //var roleDefinitionAzureStorageBlobContributor = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')
@@ -28,20 +30,25 @@ resource azResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 }
 
 
+
+
 // ################################################################################################################################################################//
 //                                                                       Module for Creating Azure Databricks Workspace
 // Outputs AzDatabricks Workspace ID, which is used when Assigning RBACs
 // ################################################################################################################################################################//
-module azDatabricks '../Az_Resources/Az_Databricks/Az_Databricks.bicep' =  {
+
+module synapsewsDeploy '../Az_Resources/Az_Synapse/Az_Synapse.bicep' = {
+  scope: resourceGroup('${environment}-synapse-rg')
+  name: 'synapsewsdeploychd'
   dependsOn: [
     azResourceGroup
   ]
-  scope: resourceGroup(resourceGroupName)
-  name: 'azDatabricks' 
   params: {
     location: location
-    workspaceName: workspaceName
-    pricingTier: pricingTier
+    environment: environment
+    shouldCreateContainers: ShouldCreateContainers
+    containerNames: containerNames
+    storageConfig : storageConfig
   }
 }
 
@@ -51,7 +58,7 @@ module azDatabricks '../Az_Resources/Az_Databricks/Az_Databricks.bicep' =  {
 
 module azKeyVault '../Az_Resources/Az_KeyVault/Az_KeyVault.bicep' = {
   dependsOn: [
-    azDatabricks
+    synapsewsDeploy
   ]
   scope: azResourceGroup
   name: 'azKeyVault'
@@ -67,7 +74,7 @@ module azKeyVault '../Az_Resources/Az_KeyVault/Az_KeyVault.bicep' = {
 module azDataLake '../Az_Resources/Az_DataLake/Az_DataLake.bicep' =  {
   dependsOn: [
     azResourceGroup
-    azDatabricks
+    synapsewsDeploy
   ]
   scope: resourceGroup(resourceGroupName)
   name: 'azDataLake' 
@@ -79,7 +86,6 @@ module azDataLake '../Az_Resources/Az_DataLake/Az_DataLake.bicep' =  {
     ShouldCreateContainers: ShouldCreateContainers
     
     // Arm Is Incredible Dumb and only takes outputs from one resource (The last Resource To Deploy). Therefore the parameters below are simply for outputting so we can grab them in a task in YAML 
-    azDatabricksWorkspaceID: azDatabricks.outputs.azDatabricksWorkspaceID 
     workspaceName: workspaceName
     resourceGroupName: resourceGroupName
     azKeyVaultName: azKeyVault.outputs.azKeyVaultName
@@ -91,7 +97,7 @@ module azDataLake '../Az_Resources/Az_DataLake/Az_DataLake.bicep' =  {
 module logAnalytics '../Az_Resources/Az_AppInsights/Az_AppInsights.bicep' = {
   dependsOn: [
     azResourceGroup
-    azDatabricks
+    synapsewsDeploy
     azDataLake
   ]
   scope: resourceGroup(resourceGroupName)
@@ -103,7 +109,6 @@ module logAnalytics '../Az_Resources/Az_AppInsights/Az_AppInsights.bicep' = {
   }
 }
 
-output azDatabricksWorkspaceID string = azDatabricks.outputs.azDatabricksWorkspaceID 
 
 
 

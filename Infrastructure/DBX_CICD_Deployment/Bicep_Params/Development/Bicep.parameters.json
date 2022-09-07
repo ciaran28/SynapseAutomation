@@ -29,7 +29,7 @@
       "value": "databricks-dev-rg"
     },
     "workspaceName" : {
-      "value": "dbxwsdev"
+      "value": "synapsewsdev"
     },
     "pricingTier": {
       "value": "premium"

@@ -28,7 +28,7 @@
         "value": "databricks-uat-rg"
       },
       "workspaceName" : {
-        "value": "dbxwsuat"
+        "value": "synapsewsuat"
       },
       "pricingTier": {
         "value": "premium"
