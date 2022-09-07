@@ -67,7 +67,7 @@ resource storageDeploy 'Microsoft.Storage/storageAccounts@2021-08-01' =  {
       accountUrl: 'https://${storageDeploy.name}.dfs.core.windows.net'
     }
     sqlAdministratorLogin: 'sqlserver'
-    sqlAdministratorLoginPassword: 'password'
+    sqlAdministratorLoginPassword: 'CoMplexSec23!'
     publicNetworkAccess: 'Enabled'
     
     
