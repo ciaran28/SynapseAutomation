@@ -48,9 +48,11 @@ for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
 
         else
             echo "Using AZ Synapse Role Assignment Create... "
+            echo $ROLE
+            echo $(_jq '.roleBeneficiaryObjID')
             az synapse role assignment create \
-            --workspace-name synapsewsdev \
-            --role $ROLE \
+            --workspace-name "synapsewsdev" \
+            --role "$ROLE" \
             --assignee $(_jq '.roleBeneficiaryObjID')
         fi
 
