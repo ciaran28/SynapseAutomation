@@ -20,7 +20,7 @@ for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
     ROLES_ARRAY="$(_jq '.roles')"
     echo $ROLES_ARRAY
 
-    # Before: [ "Contributor", "DBX_Custom_Role", "Key Vault Administrator" ]
+    # Before: [ "Contributor", "DBX_Custom_Role", "Key Vault Administrator" ] .
     # xargs trims whitespace on either side. -n removes newline characters
     ROLES_ARRAY_PARSED=$( echo $ROLES_ARRAY | jq -r | tr -d "[]" | tr -d \'\" | xargs echo -n )
     # After: Contributor, DBX_Custom_Role, Key Vault Administrator
