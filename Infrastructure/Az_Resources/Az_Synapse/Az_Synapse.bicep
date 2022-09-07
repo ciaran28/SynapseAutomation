@@ -6,6 +6,7 @@ param environment string
 param shouldCreateContainers bool
 param containerNames array
 param storageConfig object
+param workspaceName string 
 
 //@secure()
 //param adminPassword string
@@ -26,7 +27,7 @@ var roleDefinitionUser = guid('${resourceGroup().id}/ba92f5b4-2d11-453d-a403-e96
 // Params { Takes Boolean to determine whether to deploy containers. Containers are defined in an array.
 // ################################################################################################################################################################//
 resource storageDeploy 'Microsoft.Storage/storageAccounts@2021-08-01' =  {    
-  name: 'synapseadlschd${environment}'
+  name: workspaceName
     location: location
     kind: storageConfig.kind
     sku: {

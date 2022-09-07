@@ -4,8 +4,8 @@
 
 name: DBX_CICD-DEPLOY
 
-on: push
-#on: [workflow_dispatch] 
+#on: push
+on: [workflow_dispatch] 
 
 permissions:
       id-token:               write

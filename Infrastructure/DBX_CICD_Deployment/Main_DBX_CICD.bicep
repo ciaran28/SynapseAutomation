@@ -49,6 +49,7 @@ module synapsewsDeploy '../Az_Resources/Az_Synapse/Az_Synapse.bicep' = {
     shouldCreateContainers: ShouldCreateContainers
     containerNames: containerNames
     storageConfig : storageConfig
+    workspaceName: workspaceName
   }
 }
 
