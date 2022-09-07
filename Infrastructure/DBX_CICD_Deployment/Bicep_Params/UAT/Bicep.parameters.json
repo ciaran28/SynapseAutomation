@@ -25,13 +25,10 @@
         }
       },
       "resourceGroupName" :{
-        "value": "databricks-uat-rg"
+        "value": "synapse-uat-rg"
       },
       "workspaceName" : {
         "value": "synapsewsuat"
-      },
-      "pricingTier": {
-        "value": "premium"
       },
       "ShouldCreateContainers": {
         "value": true

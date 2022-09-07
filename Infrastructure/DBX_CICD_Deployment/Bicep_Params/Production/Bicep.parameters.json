@@ -25,13 +25,10 @@
         }
       },
       "resourceGroupName" :{
-        "value": "databricks-prod-rg"
+        "value": "synapse-prod-rg"
       },
       "workspaceName" : {
         "value": "synapsewsprod"
-      },
-      "pricingTier": {
-        "value": "premium"
       },
       "ShouldCreateContainers": {
         "value": true
