@@ -62,54 +62,54 @@ jobs:
 
 
 # 6.  Switch To Databricks Service Principal
-        - name:                 Authenticate to DBX Service Principal + Set AAD Tokens As Env Variables
-          run:                  bash ./.github/workflows/Utilities/Utils-DBX-SP-Authenticate.sh
-          env:
-            ARM_CLIENT_ID:      ${{ secrets.ARM_CLIENT_ID }}
-            ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
-            ARM_TENANT_ID:      ${{ secrets.ARM_TENANT_ID }}
+        #- name:                 Authenticate to DBX Service Principal + Set AAD Tokens As Env Variables
+        #  run:                  bash ./.github/workflows/Utilities/Utils-DBX-SP-Authenticate.sh
+        #  env:
+        #    ARM_CLIENT_ID:      ${{ secrets.ARM_CLIENT_ID }}
+        #    ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
+        #    ARM_TENANT_ID:      ${{ secrets.ARM_TENANT_ID }}
 
 
 # 7.  Set Up Python
-        - name:                 Setup Python
-          uses:                 actions/setup-python@v4
-          with:
-            python-version:     '3.8'
+      #  - name:                 Setup Python
+      #    uses:                 actions/setup-python@v4
+      #    with:
+      #      python-version:     '3.8'
 
 
 # 8.  PAT Token --> Key Vault
-        - name:                 Create And Store PAT Token In Key Vault
-          run:                  bash ./.github/workflows/Utilities/Utils-Create-PAToken.sh
+      #  - name:                 Create And Store PAT Token In Key Vault
+      #    run:                  bash ./.github/workflows/Utilities/Utils-Create-PAToken.sh
 
 
 # 9.  Secret Scopes
-        - name:                 Create Databricks Secret Scopes
-          run:                  bash ./.github/workflows/Utilities/Utils-Create-Scope.sh
+      #  - name:                 Create Databricks Secret Scopes
+      #    run:                  bash ./.github/workflows/Utilities/Utils-Create-Scope.sh
 
 
 # 10. Databricks Clusters
-        - name:                 Create Databricks Clusters
-          run:                  bash ./.github/workflows/Utilities/Utils-Create-Cluster.sh
-          env:
-            environment:        ${{ matrix.environments }}
+      #  - name:                 Create Databricks Clusters
+      #    run:                  bash ./.github/workflows/Utilities/Utils-Create-Cluster.sh
+      #    env:
+      #      environment:        ${{ matrix.environments }}
 
 
 # 11. Databricks Git Config
-        - name:                 Create Databricks Repos
-          run:                  bash ./.github/workflows/Utilities/Utils-Create-Repo-Folders.sh
-          env:
-            environment:        ${{ matrix.environments }}
-            PAT_GIT:            ${{ secrets.PAT_GIT }}
-            ARM_CLIENT_ID:      ${{ secrets.ARM_CLIENT_ID }}
+      #  - name:                 Create Databricks Repos
+      #    run:                  bash ./.github/workflows/Utilities/Utils-Create-Repo-Folders.sh
+      #    env:
+      #      environment:        ${{ matrix.environments }}
+      #      PAT_GIT:            ${{ secrets.PAT_GIT }}
+      #      ARM_CLIENT_ID:      ${{ secrets.ARM_CLIENT_ID }}
 
 
 # 12. Databricks CLI Config
-        - name:                   Install + Configure Databricks CLI
-          run:                    bash ./.github/workflows/Utilities/Utils-DBX-CLI-Configure.sh
+      #  - name:                   Install + Configure Databricks CLI
+      #    run:                    bash ./.github/workflows/Utilities/Utils-DBX-CLI-Configure.sh
 
 
 # 13. Databricks Wheel File Creation + DBFS/Cluster Upload
-        - name:                   Create Wheel Files & Upload To DBFS
-          run:                    bash ./.github/workflows/Utilities/Utils-Create-Wheels-DBFS-Cluster-Upload.sh
-          env:
-            environment:          ${{ matrix.environments }}
+      #  - name:                   Create Wheel Files & Upload To DBFS
+      #    run:                    bash ./.github/workflows/Utilities/Utils-Create-Wheels-DBFS-Cluster-Upload.sh
+      #    env:
+      #      environment:          ${{ matrix.environments }}

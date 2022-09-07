@@ -42,6 +42,25 @@ for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
         --scope "$RESOURCE_GROUP_ID"
         #--scope "$(_jq '.scope')"
 
+        if [[ ! " $ROLE " =~ "Synapse Administrator" ]]; then
+
+            echo "Using AZ Role Assignment Create... "
+            az role assignment create \
+            --role "$ROLE" \
+            --assignee-object-id $(_jq '.roleBeneficiaryObjID') \
+            --assignee-principal-type "$(_jq '.principalType')" \
+            --scope "$RESOURCE_GROUP_ID"
+            #--scope "$(_jq '.scope')"
+
+
+        else
+            echo "Using AZ Synapse Role Assignment Create... "
+            az synapse role assignment create \
+            --workspace-name synapsewsdev \
+            --role $ROLE 
+            --assignee $(_jq '.roleBeneficiaryObjID')
+        fi
+
     done    
     IFS=$Field_Separator
 done
