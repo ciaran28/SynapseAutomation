@@ -38,7 +38,7 @@ resource azResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 // ################################################################################################################################################################//
 
 module synapsewsDeploy '../Az_Resources/Az_Synapse/Az_Synapse.bicep' = {
-  scope: resourceGroup('${environment}-synapse-rg')
+  scope: resourceGroup('${azResourceGroup.name}')
   name: 'synapsewsdeploychd'
   dependsOn: [
     azResourceGroup
