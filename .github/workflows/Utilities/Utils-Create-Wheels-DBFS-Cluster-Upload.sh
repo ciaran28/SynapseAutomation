@@ -46,6 +46,10 @@ for row in $(echo "${JSON}" | jq -r '.WheelFiles[] | @base64'); do
     az synapse workspace-package upload \
         --file "$wheel_file_name" \
         --workspace-name "synapsewsdeploychd"
+
+
+    #$package = New-AzSynapseWorkspacePackage -WorkspaceName workspace1 -Package "C:\xxx-2.0.2-py3.whl"
+    # Update-AzSynapseSparkPool -WorkspaceName workspace1 -Name pool2 -PackageAction Add -Package $package
     
 
 done
