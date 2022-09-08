@@ -44,7 +44,7 @@ for row in $(echo "${JSON}" | jq -r '.WheelFiles[] | @base64'); do
     echo "Wheel File Name (should end in .whl): $wheel_file_name"
 
     az synapse workspace-package upload \
-        --file "wheel_file_name" \
+        --file "$wheel_file_name" \
         --workspace-name "synapsewsdeploychd"
     
 
