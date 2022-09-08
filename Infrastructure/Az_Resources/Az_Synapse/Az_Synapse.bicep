@@ -183,3 +183,4 @@ resource rbacUser 'Microsoft.Authorization/roleAssignments@2020-10-01-preview' =
       }
     }
   }
+
