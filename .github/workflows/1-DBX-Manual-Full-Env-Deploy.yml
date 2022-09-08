@@ -11,8 +11,8 @@ permissions:
       id-token:               write
       contents:               read
 
-jobs:
-  DBX_CICD_Deployment:
+jobs:       
+   DBX_CICD_Deployment:
       name:                     DBX_CICD_Deployment
       runs-on:                  ubuntu-latest
       strategy:
@@ -110,7 +110,7 @@ jobs:
 
 
 # 13. Databricks Wheel File Creation + DBFS/Cluster Upload
-      #  - name:                   Create Wheel Files & Upload To DBFS
-      #    run:                    bash ./.github/workflows/Utilities/Utils-Create-Wheels-DBFS-Cluster-Upload.sh
-      #    env:
-      #      environment:          ${{ matrix.environments }}
+        - name:                   Create Wheel Files & Upload To DBFS
+          run:                    bash ./.github/workflows/Utilities/Utils-Create-Wheels-DBFS-Cluster-Upload.sh
+          env:
+            environment:          ${{ matrix.environments }}
