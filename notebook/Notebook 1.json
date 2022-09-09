@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "c04fed39-511a-47ca-b1f0-75c04ed446b1"
+				"spark.autotune.trackingId": "a1ef892a-a1c5-48b8-8b2c-0d613559dad6"
 			}
 		},
 		"metadata": {
@@ -52,6 +52,8 @@
 				"cell_type": "code",
 				"source": [
 					"\"\"\"Example of framework usage\"\"\"\r\n",
+					"\r\n",
+					"%pip install protobuf\r\n",
 					"\r\n",
 					"#%%\r\n",
 					"import random\r\n",
@@ -330,7 +332,7 @@
 					")\r\n",
 					""
 				],
-				"execution_count": 6
+				"execution_count": 19
 			}
 		]
 	}
