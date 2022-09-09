@@ -13,7 +13,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "682e1050-cdf8-4590-9132-a43f557a6abe"
+				"spark.autotune.trackingId": "44d362a2-f273-4016-9c0d-d02ee0ba644e"
 			}
 		},
 		"metadata": {
@@ -32,6 +32,7 @@
 			{
 				"cell_type": "code",
 				"source": [
+					"\n",
 					"\"\"\"Example of framework usage\"\"\"\n",
 					"# If setting up scope with Keyvault --> Ensure you have RBAC to KV Admin From 'AzureDatabrics' to Key Vault.\n",
 					"import random\n",
@@ -218,7 +219,8 @@
 					"\n",
 					"step_crossValidate.output_data.dataframe.toPandas()\n",
 					"\n",
-					"print(step_crossValidate.output_data.dataframe.toPandas())"
+					"print(step_crossValidate.output_data.dataframe.toPandas())\n",
+					""
 				],
 				"execution_count": null
 			}
