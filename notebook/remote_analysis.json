@@ -4,7 +4,7 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "bigDataCluster",
+			"referenceName": "test",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "0e03c053-3679-4ff3-86f3-a763797c5c01"
+				"spark.autotune.trackingId": "332e80ad-9e6f-42aa-b5d6-256f3060e03d"
 			}
 		},
 		"metadata": {
@@ -31,16 +31,16 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/4f1bc772-7792-4285-99d9-3463b8d7f994/resourceGroups/synapse-dev-rg/providers/Microsoft.Synapse/workspaces/synapsewsdeploychd/bigDataPools/bigDataCluster",
-				"name": "bigDataCluster",
+				"id": "/subscriptions/4f1bc772-7792-4285-99d9-3463b8d7f994/resourceGroups/synapse-dev-rg/providers/Microsoft.Synapse/workspaces/synapsewsdeploychd/bigDataPools/test",
+				"name": "test",
 				"type": "Spark",
-				"endpoint": "https://synapsewsdeploychd.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/bigDataCluster",
+				"endpoint": "https://synapsewsdeploychd.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/test",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net"
 				},
-				"sparkVersion": "3.1",
-				"nodeCount": 3,
+				"sparkVersion": "3.2",
+				"nodeCount": 10,
 				"cores": 8,
 				"memory": 56,
 				"automaticScaleJobs": false
@@ -48,6 +48,28 @@
 			"sessionKeepAliveTimeout": 30
 		},
 		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip install protobuf"
+				],
+				"execution_count": null
+			},
 			{
 				"cell_type": "code",
 				"source": [
@@ -239,26 +261,7 @@
 					"\n",
 					"print(step_crossValidate.output_data.dataframe.toPandas())"
 				],
-				"execution_count": 24
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					"%pip uninstall protobuf -y\r\n",
-					"%pip install protobuf==4.21.3"
-				],
-				"execution_count": null
+				"execution_count": 3
 			}
 		]
 	}
