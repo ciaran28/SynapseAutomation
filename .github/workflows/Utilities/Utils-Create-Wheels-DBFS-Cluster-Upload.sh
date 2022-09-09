@@ -5,8 +5,9 @@
 echo "Import Wheel Dependencies"
 python -m pip install --upgrade pip
 python -m pip install flake8 pytest pyspark pytest-cov requests
-pip3 install -r ./src/pipelines/dbkframework/requirements.txt
+#pip3 install -r ./src/pipelines/dbkframework/requirements.txt
 python -m pip install --user --upgrade setuptools wheel
+pip install setuptools>=56.0.0    
 sudo apt-get install pandoc
 
 

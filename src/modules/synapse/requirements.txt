@@ -1,0 +1,6 @@
+pandas
+pyspark
+typeguard==2.13.0
+opencensus-ext-azure
+pyapacheatlas==0.9.1
+python-dotenv
