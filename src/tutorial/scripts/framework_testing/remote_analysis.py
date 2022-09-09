@@ -21,7 +21,7 @@ from sklearn import svm
 class Step_loadData(DataStep):
     """Load the defined dataset."""
 
-    def test(self):
+    def test(spark, self):
         """Apply data tests."""
         self.test_is_dataframe_empty(df=self.output_data.dataframe)
         self.test_null_values(
@@ -31,7 +31,7 @@ class Step_loadData(DataStep):
 
     @apply_test
     @trace
-    def initialize(self, name_dataset: str):
+    def initialize(spark, self, name_dataset: str):
         """
         Initialize the DataStep.
 
@@ -49,11 +49,11 @@ class Step_loadData(DataStep):
 class Step_crossValidate(DataStep):
     """Run multiple models in parallel."""
 
-    def test(self):
+    def test(spark, self):
         pass
 
     @trace(attrs_refact=['appi_ik'])
-    def initialize(
+    def initialize(spark,
         self,
         dt: DataStepDataframe,
         pipeline_name: str,
