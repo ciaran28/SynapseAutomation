@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "0e03c053-3679-4ff3-86f3-a763797c5c01"
+				"spark.autotune.trackingId": "a68dcc53-3b14-433c-802d-c19d6bde783f"
 			}
 		},
 		"metadata": {
@@ -48,6 +48,38 @@
 			"sessionKeepAliveTimeout": 30
 		},
 		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"\r\n",
+					"%pip install protobuf==3.20.1\r\n",
+					"\r\n",
+					"%pip uninstall six -y\r\n",
+					"%pip install six==1.15.0\r\n",
+					"\r\n",
+					"%pip uninstall typing-extension -y\r\n",
+					"%pip install typing-extensions==3.7.4.3\r\n",
+					""
+				],
+				"execution_count": 18
+			},
 			{
 				"cell_type": "code",
 				"source": [
@@ -239,26 +271,7 @@
 					"\n",
 					"print(step_crossValidate.output_data.dataframe.toPandas())"
 				],
-				"execution_count": 24
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					"%pip uninstall protobuf -y\r\n",
-					"%pip install protobuf==4.21.3"
-				],
-				"execution_count": null
+				"execution_count": 19
 			}
 		]
 	}
