@@ -8,16 +8,16 @@
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
-			"driverMemory": "28g",
-			"driverCores": 4,
-			"executorMemory": "28g",
-			"executorCores": 4,
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
 			"numExecutors": 2,
 			"conf": {
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "6",
-				"spark.autotune.trackingId": "65012aa0-8cdc-49d5-b2a2-9357bbe6815d"
+				"spark.autotune.trackingId": "bb4a2d2b-60b5-44c1-8347-57e8d9832aa7"
 			}
 		},
 		"metadata": {
@@ -45,7 +45,7 @@
 				"memory": 56,
 				"automaticScaleJobs": false
 			},
-			"sessionKeepAliveTimeout": 1
+			"sessionKeepAliveTimeout": 27
 		},
 		"cells": [
 			{
@@ -331,7 +331,7 @@
 					")\r\n",
 					""
 				],
-				"execution_count": 5
+				"execution_count": 14
 			},
 			{
 				"cell_type": "code",
@@ -349,23 +349,22 @@
 				"source": [
 					"%pip freeze\r\n",
 					"%pip uninstall protobuf==4.21.5 -y\r\n",
-					"%pip uninstall protobuf\r\n",
-					"%pip uninstall protobuf\r\n",
-					"%pip install protobuf\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip uninstall protobuf -y\r\n",
+					"%pip install protobuf==4.21.4\r\n",
 					"\r\n",
-					"%pip uninstall six \r\n",
-					"%pip uninstall six \r\n",
+					"%pip uninstall six -y\r\n",
+					"%pip uninstall six -y\r\n",
 					"%pip install six==1.15.0\r\n",
 					"\r\n",
-					"%pip uninstall six \r\n",
+					"%pip uninstall typing-extensions -y\r\n",
+					"%pip uninstall typing-extensions -y\r\n",
 					"\r\n",
+					"%pip install typing-extensions==3.7.4\r\n",
 					"\r\n",
-					"\r\n",
-					"tensorflow 2.4.1 requires six~=1.15.0, but you have six 1.16.0 which is incompatible.\r\n",
-					"tensorflow 2.4.1 requires typing-extensions~=3.7.4, but you have typing-extensions 3.10.0.0 which is incompatible.\r\n",
 					""
 				],
-				"execution_count": 4
+				"execution_count": 12
 			}
 		]
 	}
