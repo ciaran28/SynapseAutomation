@@ -46,7 +46,6 @@ jobs:
         - uses: Azure/Synapse-workspace-deployment@V1.7.0
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
-            environment: 'Azure Public'
             resourceGroup: 'synapse-dev-rg'
             clientId: ${{ secrets.CLIENTID }}
             clientSecret: ${{ secrets.CLIENTSECRET }}
