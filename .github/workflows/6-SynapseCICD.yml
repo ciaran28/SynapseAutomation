@@ -4,8 +4,8 @@
 
 name: Synapse_Deploy
 
-#on: push
-on: [workflow_dispatch] 
+on: push
+#on: [workflow_dispatch] 
 
 permissions:
       id-token:               write
@@ -33,7 +33,7 @@ jobs:
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
-        - uses: Azure/synapse-workspace-deployment@2
+        - uses: Azure/synapse-workspace-deployment@1.7
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
             ArtifactsFolder: 'SynapseAutomation'
