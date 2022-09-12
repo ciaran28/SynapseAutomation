@@ -33,7 +33,7 @@ jobs:
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
-        - uses: Azure/synapse-workspace-deployment@v2
+        - uses: Azure/synapse-workspace-deployment@2
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
             ArtifactsFolder: 'SynapseAutomation'
