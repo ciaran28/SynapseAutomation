@@ -13,7 +13,7 @@ permissions:
 
 jobs:       
     DBX_CICD_Deployment:
-      name:                     DBX_CICD_Deployment
+      name:                     Synapse_Deploy
       runs-on:                  ubuntu-latest
       strategy:
         matrix:
