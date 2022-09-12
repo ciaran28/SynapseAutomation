@@ -1,147 +1,127 @@
 {
-	"name": "Developmenttest",
-	"properties": {
-		"folder": {
-			"name": "Environments/Development"
-		},
-		"nbformat": 4,
-		"nbformat_minor": 2,
-		"sessionProperties": {
-			"driverMemory": "28g",
-			"driverCores": 4,
-			"executorMemory": "28g",
-			"executorCores": 4,
-			"numExecutors": 2,
-			"conf": {
-				"spark.dynamicAllocation.enabled": "false",
-				"spark.dynamicAllocation.minExecutors": "2",
-				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "64ef371e-2635-4d30-a999-9e039e17cdfb"
-			}
-		},
-		"metadata": {
-			"saveOutput": true,
-			"enableDebugMode": false,
-			"kernelspec": {
-				"name": "synapse_pyspark",
-				"display_name": "python"
-			},
-			"language_info": {
-				"name": "python"
-			},
-			"sessionKeepAliveTimeout": 30
-		},
-		"cells": [
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					"\r\n",
-					"dictionary_json = { \r\n",
-					"    \"SubscriptionId\": \"4f1bc772-7792-4285-99d9-3463b8d7f994\",\r\n",
-					"    \"Location\": \"uksouth\", \r\n",
-					"    \"TemplateParamFilePath\":\"Infrastructure/DBX_CICD_Deployment/Bicep_Params/Development/Bicep.parameters.json\",\r\n",
-					"    \"TemplateFilePath\":\"Infrastructure/DBX_CICD_Deployment/Main_DBX_CICD.bicep\",\r\n",
-					"    \"AZURE_DATABRICKS_APP_ID\": \"2ff814a6-3304-4ab8-85cb-cd0e6f879c1d\",\r\n",
-					"    \"MANAGEMENT_RESOURCE_ENDPOINT\": \"https://management.core.windows.net/\",\r\n",
-					"    \"Clusters\": [\r\n",
-					"        {\r\n",
-					"            \"cluster_name\": \"dbx-sp-cluster\",\r\n",
-					"            \"spark_version\": \"10.4.x-scala2.12\",\r\n",
-					"            \"node_type_id\": \"Standard_D3_v2\",\r\n",
-					"            \"spark_conf\": {},\r\n",
-					"            \"autotermination_minutes\": 30,\r\n",
-					"            \"runtime_engine\": \"STANDARD\",\r\n",
-					"            \"autoscale\": {\r\n",
-					"                \"min_workers\": 2,\r\n",
-					"                \"max_workers\": 4\r\n",
-					"            }\r\n",
-					"        },\r\n",
-					"        {\r\n",
-					"            \"cluster_name\": \"dbx-sp-cluster2\",\r\n",
-					"            \"spark_version\": \"10.4.x-scala2.12\",\r\n",
-					"            \"node_type_id\": \"Standard_D3_v2\",\r\n",
-					"            \"spark_conf\": {},\r\n",
-					"            \"autotermination_minutes\": 30,\r\n",
-					"            \"runtime_engine\": \"STANDARD\",\r\n",
-					"            \"autoscale\": {\r\n",
-					"                \"min_workers\": 2,\r\n",
-					"                \"max_workers\": 4\r\n",
-					"            }\r\n",
-					"        }\r\n",
-					"    ],\r\n",
-					"} \r\n",
-					"\r\n",
-					""
-				],
-				"execution_count": null
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					"import json \r\n",
-					"import os"
-				],
-				"execution_count": null
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					"cur_path = os.path.dirname(__file__)\r\n",
-					"new_file = os.path.join(cur_path, 'Development.json')"
-				],
-				"execution_count": null
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					""
-				],
-				"execution_count": null
-			}
-		]
-	}
+    "cells": [
+        {
+            "cell_type": "code",
+            "execution_count": null,
+            "metadata": {
+                "jupyter": {
+                    "outputs_hidden": false,
+                    "source_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                }
+            },
+            "outputs": [],
+            "source": [
+                "\n",
+                "dictionary_js = { \n",
+                "    \"SubscriptionId\": \"4f1bc772-7792-4285-99d9-3463b8d7f994\",\n",
+                "    \"Location\": \"uksouth\", \n",
+                "    \"TemplateParamFilePath\":\"Infrastructure/DBX_CICD_Deployment/Bicep_Params/Development/Bicep.parameters.json\",\n",
+                "    \"TemplateFilePath\":\"Infrastructure/DBX_CICD_Deployment/Main_DBX_CICD.bicep\",\n",
+                "    \"AZURE_DATABRICKS_APP_ID\": \"2ff814a6-3304-4ab8-85cb-cd0e6f879c1d\",\n",
+                "    \"MANAGEMENT_RESOURCE_ENDPOINT\": \"https://management.core.windows.net/\",\n",
+                "    \"Clusters\": [\n",
+                "        {\n",
+                "            \"cluster_name\": \"dbx-sp-cluster\",\n",
+                "            \"spark_version\": \"10.4.x-scala2.12\",\n",
+                "            \"node_type_id\": \"Standard_D3_v2\",\n",
+                "            \"spark_conf\": {},\n",
+                "            \"autotermination_minutes\": 30,\n",
+                "            \"runtime_engine\": \"STANDARD\",\n",
+                "            \"autoscale\": {\n",
+                "                \"min_workers\": 2,\n",
+                "                \"max_workers\": 4\n",
+                "            }\n",
+                "        },\n",
+                "        {\n",
+                "            \"cluster_name\": \"dbx-sp-cluster2\",\n",
+                "            \"spark_version\": \"10.4.x-scala2.12\",\n",
+                "            \"node_type_id\": \"Standard_D3_v2\",\n",
+                "            \"spark_conf\": {},\n",
+                "            \"autotermination_minutes\": 30,\n",
+                "            \"runtime_engine\": \"STANDARD\",\n",
+                "            \"autoscale\": {\n",
+                "                \"min_workers\": 2,\n",
+                "                \"max_workers\": 4\n",
+                "            }\n",
+                "        }\n",
+                "    ],\n",
+                "} \n",
+                "\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": null,
+            "metadata": {
+                "jupyter": {
+                    "outputs_hidden": false,
+                    "source_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                }
+            },
+            "outputs": [],
+            "source": [
+                "import json \n",
+                "import os"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": null,
+            "metadata": {
+                "jupyter": {
+                    "outputs_hidden": false,
+                    "source_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                }
+            },
+            "outputs": [],
+            "source": [
+                "cur_path = os.path.dirname(__file__)\n",
+                "new_file = os.path.join(cur_path, 'Development.json')"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": null,
+            "metadata": {
+                "jupyter": {
+                    "outputs_hidden": false,
+                    "source_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                }
+            },
+            "outputs": [],
+            "source": []
+        }
+    ],
+    "metadata": {
+        "kernelspec": {
+            "display_name": "python",
+            "name": "synapse_pyspark"
+        },
+        "language_info": {
+            "name": "python"
+        },
+        "save_output": true
+    },
+    "nbformat": 4,
+    "nbformat_minor": 2
 }
