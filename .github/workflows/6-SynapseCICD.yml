@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+#https://github.com/marketplace/actions/run-databricks-notebook
+# TO DO: Write A New Package For Setting Environment Variables From A Parameters File
+
+name: Synapse_Deploy
+
+#on: push
+on: [workflow_dispatch] 
+
+permissions:
+      id-token:               write
+      contents:               read
+
+jobs:       
+    DBX_CICD_Deployment:
+      name:                     DBX_CICD_Deployment
+      runs-on:                  ubuntu-latest
+      strategy:
+        matrix:
+          # Aligns To Environment Parameter File Names
+          environments:          [Development]   
+      steps:
+
+# 1.  Checkout Branch
+        - uses:                  actions/checkout@v3       
+        # Federated connections (below)
+        # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
+
+
+# 2.  Login To Main Service Principal
+        - name:                 Azure Login - ${{ matrix.environments }}
+          uses:                 azure/login@v1
+          with:
+            creds:              ${{secrets.AZURE_CREDENTIALS}} 
+
+        - uses: Azure/synapse-workspace-deployment
+          with:
+            TargetWorkspaceName: 'synapsewsdeploychd'
+            ArtifactsFolder: 'SynapseAutomation'
+            operation: 'validate'
+        
+        - uses: actions/upload-artifact@v3
+          with:
+            name: my-artifact
+            path: ./ExportedArtifacts
+      
