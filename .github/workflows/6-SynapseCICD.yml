@@ -23,7 +23,7 @@ jobs:
 
 # 1.  Checkout Branch
         - uses:                  actions/checkout@v3       
-        # Federated connections (below)
+        # Federated connections (below).
         # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
 
 
