@@ -33,13 +33,23 @@ jobs:
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
-        - uses: Azure/Synapse-workspace-deployment@V1.7.0
+        #- uses: Azure/Synapse-workspace-deployment@V1.7.0
+        #  with:
+        #    TargetWorkspaceName: 'synapsewsdeploychd'
+        #    operation: 'validate'
+        
+        #- uses: actions/upload-artifact@v3
+        #  with:
+        #    name: my-artifact
+        #    path: ./ExportedArtifacts
+      
+        - uses: Azure/synapse-workspace-deployment
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
-            operation: 'validate'
-        
-        - uses: actions/upload-artifact@v3
-          with:
-            name: my-artifact
-            path: ./ExportedArtifacts
-      
+            environment: 'Azure Public'
+            resourceGroup: 'synapse-dev-rg'
+            clientId: ${{ secrets.CLIENTID }}
+            clientSecret: ${{ secrets.CLIENTSECRET }}
+            subscriptionId: ${{ secrets.SUBID }}
+            tenantId: ${{ secrets.TENANTID }}
+            operation: 'validateDeploy'
