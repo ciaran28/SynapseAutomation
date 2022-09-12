@@ -15,7 +15,17 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"snapshot": true
+					"notebook": {
+						"referenceName": "Notebook 1",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "bigDataCluster",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": null,
+					"driverSize": null
 				}
 			}
 		],
