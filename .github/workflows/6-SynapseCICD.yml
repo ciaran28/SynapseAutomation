@@ -43,7 +43,7 @@ jobs:
         #    name: my-artifact
         #    path: ./ExportedArtifacts
       
-        - uses: Azure/synapse-workspace-deployment
+        - uses: Azure/synapse-workspace-deployment@v1.7.0
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
             environment: 'Azure Public'
