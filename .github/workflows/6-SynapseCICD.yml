@@ -22,7 +22,11 @@ jobs:
       steps:
 
 # 1.  Checkout Branch
-        - uses:                  actions/checkout@v3       
+        - uses:                  actions/checkout@v3  
+          with:
+            repository: 'SynapseArtifacts'
+            ref: 'main'
+
         # Federated connections (below).
         # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
 
@@ -45,9 +49,10 @@ jobs:
       
         - uses: Azure/Synapse-workspace-deployment@V1.7.0
           with:
-            TargetWorkspaceName: synapsewsdeploychd
+            TargetWorkspaceName: 'synapsewsdeploychd'
             environment: 'Azure Public'
-            resourceGroup: synapse-dev-rg
+            ArtifactsFolder: 'synpaseresources'
+            resourceGroup: 'synapse-dev-rg'
             clientId: ${{ secrets.CLIENTID }}
             clientSecret: ${{ secrets.CLIENTSECRET }}
             subscriptionId: ${{ secrets.SUBID }}
