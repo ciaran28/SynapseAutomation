@@ -37,6 +37,11 @@ jobs:
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
+        - name:                   Git Configure Dev Workspace 
+          run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
+          env:
+            environment:          ${{ matrix.environments }}
+
         #- uses: Azure/Synapse-workspace-deployment@V1.7.0
         #  with:
         #    TargetWorkspaceName: 'synapsewsdeploychd'
