@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 #https://github.com/marketplace/actions/run-databricks-notebook
-# TO DO: Write A New Package For Setting Environment Variables From A Parameters File
+# TO DO: Write A New Package For Setting Environment Variables From A Parameters File.
 
 name: Synapse_Deploy
 
