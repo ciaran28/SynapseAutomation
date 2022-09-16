@@ -37,6 +37,8 @@ jobs:
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
+        - uses:                  actions/checkout@v3  
+
         - name:                   Git Configure Dev Workspace 
           run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
           env:
@@ -51,7 +53,12 @@ jobs:
         #  with:
         #    name: my-artifact
         #    path: ./ExportedArtifacts
-      
+# 1.  Checkout Synapse Artifact Branch
+        - uses:                  actions/checkout@v3  
+          with:
+            repository: 'ciaran28/SynapseArtifacts'
+            ref: 'main'
+
         - uses: Azure/Synapse-workspace-deployment@V1.7.0
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
