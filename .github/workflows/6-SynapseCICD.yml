@@ -4,8 +4,8 @@
 
 name: Synapse_Deploy
 
-on: push
-#on: [workflow_dispatch] 
+#on: push
+on: [workflow_dispatch] 
 
 permissions:
       id-token:               write
