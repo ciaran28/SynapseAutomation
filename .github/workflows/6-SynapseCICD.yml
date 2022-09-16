@@ -24,7 +24,7 @@ jobs:
 # 1.  Checkout Branch
         - uses:                  actions/checkout@v3  
           with:
-            repository: 'SynapseArtifacts'
+            repository: 'ciaran28/SynapseArtifacts'
             ref: 'main'
 
         # Federated connections (below).
