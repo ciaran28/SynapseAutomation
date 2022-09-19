@@ -19,8 +19,6 @@ for row in $(echo "${JSON}" | jq -r '.Clusters[] | @base64'); do
     _jq() {
         echo ${row} | base64 --decode | jq -r ${1}
     }
-
-    echo "Synapse Pool Does Not Exist: Create Synapse Pool... "
     
     az synapse spark pool create \
         --name "$(_jq '.cluster_name')" \

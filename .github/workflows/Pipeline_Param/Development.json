@@ -55,7 +55,7 @@
     "WheelFiles": [
             {
                 "setup_py_file_path": "src/modules/synapse/setup.py",
-                "wheel_cluster": "dbx-sp-cluster",
+                "wheel_cluster": "SynapsePoolDev",
                 "upload_to_cluster?": true
             }
     ],

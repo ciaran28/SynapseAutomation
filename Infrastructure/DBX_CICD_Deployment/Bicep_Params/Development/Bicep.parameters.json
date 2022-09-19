@@ -29,7 +29,7 @@
       "value": "synapse-dev-rg"
     },
     "workspaceName" : {
-      "value": "synapsewsdeploychd"
+      "value": "synapsewsdev"
     },
     "ShouldCreateContainers": {
       "value": true

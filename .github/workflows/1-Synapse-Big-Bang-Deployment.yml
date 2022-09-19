@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+#https://github.com/marketplace/actions/run-databricks-notebook
+# TO DO: Write A New Package For Setting Environment Variables From A Parameters File.
+
+name: Synapse_Deploy
+on: push
+#on: [workflow_dispatch] 
+
+permissions:
+      id-token:                 write
+      contents:                 read
+
+jobs:       
+    Synapse_Deploy:
+      name:                     Synapse_Deploy
+      runs-on:                  ubuntu-latest
+      strategy:
+        matrix:
+          # Aligns To Environment Parameter File Names..
+          environments:          [Development]   
+      steps:
+
+        - uses:                  actions/checkout@v3  
+
+# 2.  Login To Main Service Principal.
+        - name:                   Azure Login - ${{ matrix.environments }}
+          uses:                   azure/login@v1
+          with:
+            creds:                ${{secrets.AZURE_CREDENTIALS}} 
+
+
+# 3.  Create Env Variables From Parameters Files
+        - name:                   Set Pipeline Parameters As Environment Variables 
+          uses:                   antifree/json-to-variables@v1.0.1
+          with:
+            filename:             '.github/workflows/Pipeline_Param/${{ matrix.environments }}.json'
+            prefix:               pipeline
+        
+
+        - name:                   Set BICEP Parameters As Environment Variables 
+          uses:                   antifree/json-to-variables@v1.0.1
+          with:
+            filename:             'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
+            prefix:               bicep
+
+        - name:                   Deploy DBX CICD Azure Resources
+          run:                    bash ./.github/workflows/Utilities/Utils-Azure-Resources.sh
+          env:
+            environment:          ${{ matrix.environments }}
+
+        
+        - name:                   Create Synapse Spark Pools 
+          run:                    bash ./.github/workflows/Utilities/Utils-Create-Synapse-Pool.sh
+          env:
+            environment:          ${{ matrix.environments }}
+        
+        - name:                   Assign RBAC Permissions 
+          run:                    bash ./.github/workflows/Utilities/Utils-Assign-RBAC.sh
+          env:
+            environment:          ${{ matrix.environments }}
+        
+        - name:                   Create Wheel Files & Upload To DBFS
+          run:                    bash ./.github/workflows/Utilities/Utils-Create-Wheels-DBFS-Cluster-Upload.sh
+          env:
+            environment:          ${{ matrix.environments }}
