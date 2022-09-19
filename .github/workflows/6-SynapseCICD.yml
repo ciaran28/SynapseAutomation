@@ -42,10 +42,11 @@ jobs:
           with:
             filename:           'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
             prefix:             bicep
-        - name:                   Deploy DBX CICD Azure Resources
-          run:                    bash ./.github/workflows/Utilities/Utils-Deploy-Azure-Bicep-Resources.sh
-          env:
-            environment:          ${{ matrix.environments }}
+        
+        #- name:                   Deploy DBX CICD Azure Resources
+        #  run:                    bash ./.github/workflows/Utilities/Utils-Deploy-Azure-Bicep-Resources.sh
+        #  env:
+        #    environment:          ${{ matrix.environments }}
 
         - name:                   Assign RBAC Permissions 
           run:                    bash ./.github/workflows/Utilities/Utils-Assign-RBAC.sh
@@ -69,6 +70,10 @@ jobs:
         # Federated connections (below)..
         # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
 
+        - name:                 Azure Login - ${{ matrix.environments }}
+          uses:                 azure/login@v1
+          with:
+            creds: '{"clientId":"${{ secrets.CLIENTID }}","clientSecret":"${{ secrets.CLIENTSECRET }}","subscriptionId":"${{ secrets.SUBID }}","tenantId":"${{ secrets.TENANTID }}"}'
 
         - uses: Azure/Synapse-workspace-deployment@V1.7.0
           with:
