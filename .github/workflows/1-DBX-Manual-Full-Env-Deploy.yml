@@ -39,13 +39,13 @@ jobs:
           uses:                 antifree/json-to-variables@v1.0.1
           with:
             filename:           '.github/workflows/Pipeline_Param/${{ matrix.environments }}.json'
-            prefix:             param
+            prefix:             pipeline
         
         - name:                 Infrastructure/DBX_CICD_Deployment/BICEP_Params --> Env Variables
           uses:                 antifree/json-to-variables@v1.0.1
           with:
             filename:           'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
-            prefix:             param
+            prefix:             bicep
 
 
 # 4.  Deploy Azure Resources    (BICEP)

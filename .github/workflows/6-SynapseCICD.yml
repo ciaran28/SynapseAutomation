@@ -4,8 +4,8 @@
 
 name: Synapse_Deploy
 
-#on: push
-on: [workflow_dispatch] 
+on: push
+#on: [workflow_dispatch] 
 
 permissions:
       id-token:               write
@@ -45,6 +45,10 @@ jobs:
             prefix:             param
 
 
+        - name:                   Git Configure Dev Workspace 
+          run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
+          env:
+            environment:          ${{ matrix.environments }}
 
 
 
@@ -64,19 +68,6 @@ jobs:
         # Federated connections (below)..
         # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
 
-
-        - name:                   Git Configure Dev Workspace 
-          run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
-          env:
-            environment:          ${{ matrix.environments }}
-
-
-
-# 1.  Checkout Synapse Artifact Branch
-        - uses:                  actions/checkout@v3  
-          with:
-            repository: 'ciaran28/SynapseArtifacts'
-            ref: 'main'
 
         - uses: Azure/Synapse-workspace-deployment@V1.7.0
           with:
