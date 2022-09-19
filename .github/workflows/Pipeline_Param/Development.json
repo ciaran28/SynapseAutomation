@@ -5,8 +5,6 @@
     "Location": "uksouth", 
     "TemplateParamFilePath":"Infrastructure/DBX_CICD_Deployment/Bicep_Params/Development/Bicep.parameters.json",
     "TemplateFilePath":"Infrastructure/DBX_CICD_Deployment/Main_DBX_CICD.bicep",
-    "AZURE_DATABRICKS_APP_ID": "2ff814a6-3304-4ab8-85cb-cd0e6f879c1d",
-    "MANAGEMENT_RESOURCE_ENDPOINT": "https://management.core.windows.net/",
     "RBAC_Assignments": [
         {
             "roles": [ 
@@ -60,29 +58,6 @@
                 "wheel_cluster": "dbx-sp-cluster",
                 "upload_to_cluster?": true
             }
-    ],
-    "Jobs": [
-        {
-            "name": "job_remote_analysis",
-            "settings": {
-                "name": "job_remote_analysis",
-                "email_notifications": {
-                    "no_alert_for_skipped_runs": false
-                },
-                "max_concurrent_runs": 1,
-                "tasks": [
-                    {
-                        "task_key": "job_remote_analysis",
-                        "notebook_task": {
-                            "notebook_path": "/Repos/ce79c2ef-170d-4f1c-a706-7814efb94898/DevelopmentFolder/src/tutorial/scripts/framework_testing/remote_analysis",
-                            "source": "WORKSPACE"
-                        },
-                        "cluster_name": "dbx-sp-cluster"
-                    }
-                ],
-                "format": "MULTI_TASK"
-            }
-        }
     ],
     "Git_Configuration": [
         {

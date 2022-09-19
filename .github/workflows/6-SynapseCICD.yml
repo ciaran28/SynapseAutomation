@@ -21,6 +21,9 @@ jobs:
           environments:          [Development]   
       steps:
 
+
+
+
 # 1.  Checkout Branch
         - uses:                  actions/checkout@v3  
           with:
@@ -31,28 +34,39 @@ jobs:
         # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
 
 
+
+
+
 # 2.  Login To Main Service Principal.
         - name:                 Azure Login - ${{ matrix.environments }}
           uses:                 azure/login@v1
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
-        - uses:                  actions/checkout@v3  
+
+
+
+# 3.  Create Env Variables From Parameters Files
+        - name:                 .github/workflows/Pipeline_Param --> Env Variables
+          uses:                 antifree/json-to-variables@v1.0.1
+          with:
+            filename:           '.github/workflows/Pipeline_Param/${{ matrix.environments }}.json'
+            prefix:             param
+        
+        - name:                 Infrastructure/DBX_CICD_Deployment/BICEP_Params --> Env Variables
+          uses:                 antifree/json-to-variables@v1.0.1
+          with:
+            filename:           'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
+            prefix:             param
+
 
         - name:                   Git Configure Dev Workspace 
           run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
           env:
             environment:          ${{ matrix.environments }}
 
-        #- uses: Azure/Synapse-workspace-deployment@V1.7.0
-        #  with:
-        #    TargetWorkspaceName: 'synapsewsdeploychd'
-        #    operation: 'validate'
-        
-        #- uses: actions/upload-artifact@v3
-        #  with:
-        #    name: my-artifact
-        #    path: ./ExportedArtifacts
+
+
 # 1.  Checkout Synapse Artifact Branch
         - uses:                  actions/checkout@v3  
           with:
