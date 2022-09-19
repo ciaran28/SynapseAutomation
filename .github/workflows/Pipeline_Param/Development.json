@@ -46,7 +46,7 @@
             "node_count": 3,
             "spark_version": "3.1",
             "enable_auto_pause": true,
-            "auto_pause_delay_in_minutes": 15,
+            "auto_pause_delay_in_minutes": 10,
             "enable_auto_scale": true,
             "autoscale_max_node_count": 10,
             "autoscale_min_node_count": 3
