@@ -30,6 +30,7 @@ jobs:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
 
 
+
 # 3.  Create Env Variables From Parameters Files
         - name:                 Set Pipeline Parameters As Environment Variables 
           uses:                 antifree/json-to-variables@v1.0.1
@@ -43,6 +44,11 @@ jobs:
           with:
             filename:           'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
             prefix:             bicep
+
+        - name:                   Assign RBAC Permissions 
+          run:                    bash ./.github/workflows/Utilities/Utils-Assign-RBAC.sh
+          env:
+            environment:          ${{ matrix.environments }}
 
 
         - name:                   Git Configure Dev Workspace 
