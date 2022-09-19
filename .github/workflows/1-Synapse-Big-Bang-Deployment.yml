@@ -47,15 +47,14 @@ jobs:
           run:                    bash ./.github/workflows/Utilities/Utils-Azure-Resources.sh
           env:
             environment:          ${{ matrix.environments }}
-
-        
-        - name:                   Create Synapse Spark Pools 
-          run:                    bash ./.github/workflows/Utilities/Utils-Create-Synapse-Pool.sh
+            
+        - name:                   Assign RBAC Permissions 
+          run:                    bash ./.github/workflows/Utilities/Utils-Assign-RBAC.sh
           env:
             environment:          ${{ matrix.environments }}
         
-        - name:                   Assign RBAC Permissions 
-          run:                    bash ./.github/workflows/Utilities/Utils-Assign-RBAC.sh
+        - name:                   Create Synapse Spark Pools 
+          run:                    bash ./.github/workflows/Utilities/Utils-Create-Synapse-Pool.sh
           env:
             environment:          ${{ matrix.environments }}
         
