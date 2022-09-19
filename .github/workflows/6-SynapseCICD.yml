@@ -21,29 +21,13 @@ jobs:
           environments:          [Development]   
       steps:
 
-
-
-
-# 1.  Checkout Branch
         - uses:                  actions/checkout@v3  
-          with:
-            repository: 'ciaran28/SynapseArtifacts'
-            ref: 'main'
-
-        # Federated connections (below)..
-        # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
-
-
-
-
 
 # 2.  Login To Main Service Principal.
         - name:                 Azure Login - ${{ matrix.environments }}
           uses:                 azure/login@v1
           with:
             creds:              ${{secrets.AZURE_CREDENTIALS}} 
-
-
 
 
 # 3.  Create Env Variables From Parameters Files
@@ -53,11 +37,32 @@ jobs:
             filename:           '.github/workflows/Pipeline_Param/${{ matrix.environments }}.json'
             prefix:             param
         
+
         - name:                 Infrastructure/DBX_CICD_Deployment/BICEP_Params --> Env Variables
           uses:                 antifree/json-to-variables@v1.0.1
           with:
             filename:           'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
             prefix:             param
+
+
+
+
+
+
+
+
+
+
+
+
+# 1.  Checkout Repo Containing Artifacts
+        - uses:                  actions/checkout@v3  
+          with:
+            repository: 'ciaran28/SynapseArtifacts'
+            ref: 'main'
+
+        # Federated connections (below)..
+        # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
 
 
         - name:                   Git Configure Dev Workspace 
