@@ -64,8 +64,8 @@
             "git_username": "ciaran28",
             "git_provider": "GitHub",
             "branch": "main",
-            "repository_name": "SynapseArtifacts",
-            "repo_root_folder": "/synapseresources"
+            "repository_name": "SynapseAutomation",
+            "repo_root_folder": "/Syanpse_Artifacts"
         }
     ],
     "Repo_Configuration": [
