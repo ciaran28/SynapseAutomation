@@ -4,8 +4,8 @@
 
 name: Synapse_Deploy
 
-#on: push
-on: [workflow_dispatch] 
+on: push
+#on: [workflow_dispatch] 
 
 permissions:
       id-token:               write
@@ -45,10 +45,10 @@ jobs:
             prefix:             bicep
 
 
-        #- name:                   Git Configure Dev Workspace 
-        #  run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
-        #  env:
-        #    environment:          ${{ matrix.environments }}
+        - name:                   Git Configure Dev Workspace 
+          run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
+          env:
+            environment:          ${{ matrix.environments }}
 
         - name:                   Create Synapse Spark Pools 
           run:                    bash ./.github/workflows/Utilities/Utils-Create-Synapse-Pool.sh

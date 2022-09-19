@@ -35,7 +35,6 @@ for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
         echo "Scope: $RESOURCE_GROUP_ID"
         echo "Principal Type $(_jq '.principalType')"
 
-
         if [[ ! " $ROLE " =~ "Synapse Administrator" ]]; then
 
             echo "Using AZ Role Assignment Create... "
@@ -56,51 +55,6 @@ for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
             --role "$ROLE" \
             --assignee $(_jq '.roleBeneficiaryObjID')
         fi
-
     done    
     IFS=$Field_Separator
 done
-
-
-
-
-
-
-
-
-
-
-
-
-
-#echo "Iterate And Assign RBAC Permissions"
-#for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
-#    _jq() {
-#        echo ${row} | base64 --decode | jq -r ${1}
-#    }
-    # [ "Contributor", "DBX_Custom_Role", "Key Vault Administrator" ]
-#    role_array=$(_jq '.roles')
-#    echo $role_array
-
-#    echo "test"
-#    echo "$(_jq '.roles')" | jq -r ' @sh '
-
-
-
-    #roleBeneficiaryObjID=$(_jq '.roleBeneficiaryObjID')
-    #principalType="$(_jq '.principalType')"
-    #echo $roleBeneficiaryObjID
-    #echo $principalType
-
-    #for new in ${role_array[@]}; do echo $new done
-        #echo $roleBeneficiaryObjID
-        #echo $principalType
-    #az role assignment create \
-    #--role "$(_jq '.role')" \
-    #--assignee-object-id $(_jq '.roleBeneficiaryObjID') \
-    #--assignee-principal-type "$(_jq '.principalType')" \
-    #--scope "$RESOURCE_GROUP_ID"
-    #--scope "$(_jq '.scope')"
-#done
-
-
