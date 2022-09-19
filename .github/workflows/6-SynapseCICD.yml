@@ -2,10 +2,10 @@
 #https://github.com/marketplace/actions/run-databricks-notebook
 # TO DO: Write A New Package For Setting Environment Variables From A Parameters File.
 
-name: Synapse_Deploy
+name: Synapse_Deploy_CICD
 
-on: push
-#on: [workflow_dispatch] 
+#on: push
+on: [workflow_dispatch] 
 
 permissions:
       id-token:               write
