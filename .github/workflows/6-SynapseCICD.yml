@@ -31,30 +31,30 @@ jobs:
 
 
 # 3.  Create Env Variables From Parameters Files
-        - name:                 .github/workflows/Pipeline_Param --> Env Variables
+        - name:                 Set Pipeline Parameters As Environment Variables 
           uses:                 antifree/json-to-variables@v1.0.1
           with:
             filename:           '.github/workflows/Pipeline_Param/${{ matrix.environments }}.json'
             prefix:             pipeline
         
 
-        - name:                 Infrastructure/DBX_CICD_Deployment/BICEP_Params --> Env Variables
+        - name:                 Set BICEP Parameters As Environment Variables 
           uses:                 antifree/json-to-variables@v1.0.1
           with:
             filename:           'Infrastructure/DBX_CICD_Deployment/Bicep_Params/${{ matrix.environments }}/Bicep.parameters.json'
             prefix:             bicep
 
 
-        - name:                   Git Configure Dev Workspace 
-          run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
+        #- name:                   Git Configure Dev Workspace 
+        #  run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
+        #  env:
+        #    environment:          ${{ matrix.environments }}
+
+        - name:                   Create Synapse Spark Pools 
+          run:                    bash ./.github/workflows/Utilities/Utils-Create-Synapse-Pool.sh
           env:
             environment:          ${{ matrix.environments }}
   
-
-
-
-
-
 
 
 

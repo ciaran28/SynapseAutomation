@@ -28,28 +28,16 @@
     ],
     "Clusters": [
         {
-            "cluster_name": "dbx-sp-cluster",
-            "spark_version": "10.4.x-scala2.12",
-            "node_type_id": "Standard_D3_v2",
-            "spark_conf": {},
-            "autotermination_minutes": 30,
-            "runtime_engine": "STANDARD",
-            "autoscale": {
-                "min_workers": 2,
-                "max_workers": 4
-            }
-        },
-        {
-            "cluster_name": "dbx-sp-cluster2",
-            "spark_version": "10.4.x-scala2.12",
-            "node_type_id": "Standard_D3_v2",
-            "spark_conf": {},
-            "autotermination_minutes": 30,
-            "runtime_engine": "STANDARD",
-            "autoscale": {
-                "min_workers": 2,
-                "max_workers": 4
-            }
+            "cluster_name": "SynapsePoolDev",
+            "node_size": "Medium",
+            "node_size_family": {},
+            "node_count": 3,
+            "spark_version": "3.1",
+            "enable_auto_pause": true,
+            "auto_pause_delay_in_minutes": 15,
+            "enable_auto_scale": true,
+            "autoscale_max_node_count": 10,
+            "autoscale_min_node_count": 3
         }
     ],
     "WheelFiles": [
