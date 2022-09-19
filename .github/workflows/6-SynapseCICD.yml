@@ -57,11 +57,6 @@ jobs:
   
 
 
-# 1.  Checkout Repo Containing Artifacts
-        - uses:                  actions/checkout@v3  
-          with:
-            repository: 'ciaran28/SynapseArtifacts'
-            ref: 'main'
 
         # Federated connections (below)..
         # https://goodworkaround.com/2021/12/21/another-deep-dive-into-azure-ad-workload-identity-federation-using-github-actions/
@@ -71,7 +66,7 @@ jobs:
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
             environment: 'Azure Public'
-            ArtifactsFolder: 'Syanpse_Artifacts'
+            ArtifactsFolder: 'Synapse_Artifacts'
             resourceGroup: 'synapse-dev-rg'
             clientId: ${{ secrets.CLIENTID }}
             clientSecret: ${{ secrets.CLIENTSECRET }}

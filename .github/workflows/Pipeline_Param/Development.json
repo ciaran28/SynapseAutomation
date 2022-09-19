@@ -67,12 +67,5 @@
             "repository_name": "SynapseAutomation",
             "repo_root_folder": "/Syanpse_Artifacts"
         }
-    ],
-    "Repo_Configuration": [
-        {
-            "url": "https://github.com/ciaran28/DatabricksAutomation",
-            "provider": "gitHub",
-            "path": "DevelopmentFolder"
-        }
     ]
 }
