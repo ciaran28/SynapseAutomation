@@ -62,7 +62,10 @@
     "Git_Configuration": [
         {
             "git_username": "ciaran28",
-            "git_provider": "gitHub"
+            "git_provider": "GitHub",
+            "branch": "main",
+            "repository_name": "SynapseArtifacts",
+            "repo_root_folder": "/synapseresources"
         }
     ],
     "Repo_Configuration": [
