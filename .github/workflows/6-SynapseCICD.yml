@@ -71,7 +71,7 @@ jobs:
           with:
             TargetWorkspaceName: 'synapsewsdeploychd'
             environment: 'Azure Public'
-            ArtifactsFolder: 'synapseresources'
+            ArtifactsFolder: 'Syanpse_Artifacts'
             resourceGroup: 'synapse-dev-rg'
             clientId: ${{ secrets.CLIENTID }}
             clientSecret: ${{ secrets.CLIENTSECRET }}
