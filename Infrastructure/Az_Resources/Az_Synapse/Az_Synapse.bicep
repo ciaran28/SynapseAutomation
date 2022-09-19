@@ -7,6 +7,7 @@ param shouldCreateContainers bool
 param containerNames array
 param storageConfig object
 param workspaceName string 
+param workspaceNamesa string 
 
 //@secure()
 //param adminPassword string
@@ -27,7 +28,7 @@ var roleDefinitionUser = guid('${resourceGroup().id}/ba92f5b4-2d11-453d-a403-e96
 // Params { Takes Boolean to determine whether to deploy containers. Containers are defined in an array.
 // ################################################################################################################################################################//
 resource storageDeploy 'Microsoft.Storage/storageAccounts@2021-08-01' =  {    
-  name: workspaceName
+  name: workspaceNamesa
     location: location
     kind: storageConfig.kind
     sku: {
@@ -56,7 +57,7 @@ resource storageDeploy 'Microsoft.Storage/storageAccounts@2021-08-01' =  {
 //                                                                       Synapse Workspace                                                                         //
 // ################################################################################################################################################################//
   resource synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01' = {
-  name: 'synapsewsdeploychd'
+  name: workspaceName
   location: location // Policy on subscription. Probably in the wrong region
   identity: {
     type: 'SystemAssigned'

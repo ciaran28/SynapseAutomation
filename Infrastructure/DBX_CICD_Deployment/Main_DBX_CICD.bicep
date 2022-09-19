@@ -10,6 +10,7 @@ param ShouldCreateContainers bool = true
 param loganalyticswsname string 
 param appInsightswsname string 
 param storageAccountName string 
+param workspaceNamesa string 
 
 
 
@@ -50,6 +51,7 @@ module synapsewsDeploy '../Az_Resources/Az_Synapse/Az_Synapse.bicep' = {
     containerNames: containerNames
     storageConfig : storageConfig
     workspaceName: workspaceName
+    workspaceNamesa: workspaceNamesa
   }
 }
 

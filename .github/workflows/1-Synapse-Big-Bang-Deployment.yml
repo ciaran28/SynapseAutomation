@@ -57,6 +57,13 @@ jobs:
           run:                    bash ./.github/workflows/Utilities/Utils-Create-Synapse-Pool.sh
           env:
             environment:          ${{ matrix.environments }}
+
+        
+        - name:                   Git Configure Dev Workspace 
+          if:                     ${{ matrix.environments }} == 'Development'
+          run:                    bash ./.github/workflows/Utilities/Utils-Synapse-Dev-Git-Config.sh
+          env:
+            environment:          ${{ matrix.environments }}
         
         - name:                   Create Wheel Files & Upload To DBFS
           run:                    bash ./.github/workflows/Utilities/Utils-Create-Wheels-DBFS-Cluster-Upload.sh

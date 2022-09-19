@@ -2,10 +2,10 @@
 
 # Ensure That Your DevOps/PipelineAgent Has Owner RBAC Assigned. Do This Manually In Azure Portal 
 # Anything With param_ Was Set As An Environment Variable Using "antifree/json-to-variables@v1.0.1" In Main Yaml Pipeline
-echo "SubscriptionID: $param_SubscriptionId"
-echo "Resource Group Name: $param_parameters_resourceGroupName_value"
+echo "SubscriptionID: $pipeline_SubscriptionId"
+echo "Resource Group Name: $bicep_parameters_resourceGroupName_value"
 
-RESOURCE_GROUP_ID=$( az group show -n $param_parameters_resourceGroupName_value --query id -o tsv )
+RESOURCE_GROUP_ID=$( az group show -n $bicep_parameters_resourceGroupName_value --query id -o tsv )
 echo "Resource Group Resource ID: $RESOURCE_GROUP_ID"
 
 echo "Ingest JSON File"
@@ -50,9 +50,9 @@ for row in $(echo "${json}" | jq -r '.RBAC_Assignments[] | @base64'); do
             echo "Using AZ Synapse Role Assignment Create... "
             echo $ROLE
             echo $(_jq '.roleBeneficiaryObjID')
-            echo $param_parameters_workspaceName_value
+            echo $bicep_parameters_workspaceName_value
             az synapse role assignment create \
-            --workspace-name "synapsewsdeploychd" \
+            --workspace-name "$bicep_parameters_workspaceName_value" \
             --role "$ROLE" \
             --assignee $(_jq '.roleBeneficiaryObjID')
         fi
